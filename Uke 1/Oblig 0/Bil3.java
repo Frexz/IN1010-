@@ -1,21 +1,21 @@
 public class Bil3 {
-    private String regNum;
+    private String registreringsnummer;
 
     /* Konstruktøren
-    @param String regNum, registreringsnummer til bil */
+    parameter regNum av type String, registreringsnummer til bil */
     public Bil3(String regNum) {
-        this.regNum = regNum;
+        registreringsnummer = regNum;
     }
 
     // Skriver ut registreringsnummeret til bilen
     public void skrivUt() {
-        System.out.printf("Registreringsnummer: %s", regNum);
+        System.out.printf("Registreringsnummer: %s", registreringsnummer);
     }
 
     /* Henter registreringsnummer
-    @return String regNum, registreringsnummer til bilen */
+    returverdi regNum av type String, registreringsnummer til bilen */
     public String hentNummer() {
-        return regNum;
+        return registreringsnummer;
     }
 
 

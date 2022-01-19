@@ -2,7 +2,7 @@ public class Bil2 {
     private String registreringsnummer;
 
     /* Konstruktøren
-    @param String regNum, registreringsnummer til bil */
+    parameter regNum av type String, registreringsnummer til bil */
     public Bil2(String regNum) {
         registreringsnummer = regNum;
     }
