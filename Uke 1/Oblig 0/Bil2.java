@@ -9,7 +9,7 @@ public class Bil2 {
 
     // Skriver ut registreringsnummeret til bilen
     public void skrivUt() {
-        System.out.printf("Registreringsnummer: %s", registreringsnummer);
+        System.out.printf("Registreringsnummer: %s%n", registreringsnummer);
     }
 
 

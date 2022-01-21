@@ -8,6 +8,6 @@ public class Person {
 
     // Skriver ut registreringsnummeret til bilen som eieren ei
     public void skrivUtBilnummer() {
-        System.out.printf("Eiers bils registreringnummer: %s", bil.hentNummer());
+        System.out.printf("Eiers bils registreringnummer: %s%ns", bil.hentNummer());
     }
 }
