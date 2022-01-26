@@ -22,6 +22,7 @@ public class Rack {
 
                 if (rack[i] == null) {
                     rack[i] = node;
+                    break;
                 }
             }
         }
