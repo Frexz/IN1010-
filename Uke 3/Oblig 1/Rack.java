@@ -32,6 +32,10 @@ public class Rack {
         int antPros = 0;
 
         for (Node node : rack) {
+            if (node == null) {
+                break;
+            }
+            
             antPros += node.hentPros();
         }
 
@@ -43,6 +47,10 @@ public class Rack {
         int antall = 0;
 
         for (Node node : rack) {
+            if (node == null) {
+                break;
+            }
+
             if (node.hentMinne() >= paakrevdMinne) {
                 antall++;
             }

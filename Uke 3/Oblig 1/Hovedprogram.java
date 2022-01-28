@@ -3,7 +3,7 @@ import java.io.File;
 
 public class Hovedprogram {
     public static void main(String[] args) {
-        String filnavn = "dataklynge.txt";
+        String filnavn = "dataklynge3.txt";
 
         // Oppretter dataklynge
         Dataklynge saga = new Dataklynge();
@@ -17,7 +17,6 @@ public class Hovedprogram {
         System.out.printf("Noder med minst 1024 GB: %d\n\n", saga.noderMedNokMinne(1024));
         System.out.printf("Antall prosessorer: %d\n", saga.antProsessorer());
         System.out.printf("Antall rack: %d\n", saga.antallRack());
-
 
     }
 
@@ -42,6 +41,16 @@ public class Hovedprogram {
             int antallProsessorer = Integer.parseInt(info[1]);
             int minne = Integer.parseInt(info[2]);
 
+            // Sjekker om nodene holder til kravet om maks 16 prosessorer per node eller maks minne på 4 TB
+            if (antallProsessorer > 16) {
+                System.out.println("Kan ikke legge til noder med flere enn 16 prosessorer.");
+                System.exit(0);
+            }
+            else if (minne > 4096) {
+                System.out.println("Kan ikke legge til noder med mer enn 4096 GB minne.");
+                System.exit(0);
+            }
+
             // Legger til noder i dataklynge
             for (int i = 0; i < antallNoder; i++) {
                 Node node = new Node(antallProsessorer, minne);
@@ -51,6 +60,5 @@ public class Hovedprogram {
         }
 
         fil.close();
-        System.out.println("Noder fra fil har blitt lagt til i dataklynge.");
     }
 }
