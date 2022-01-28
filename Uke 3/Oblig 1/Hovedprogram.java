@@ -17,6 +17,8 @@ public class Hovedprogram {
         System.out.printf("Noder med minst 1024 GB: %d\n\n", saga.noderMedNokMinne(1024));
         System.out.printf("Antall prosessorer: %d\n", saga.antProsessorer());
         System.out.printf("Antall rack: %d\n", saga.antallRack());
+
+
     }
 
     public static void lesFraFil(String filnavn, Dataklynge klynge) {
@@ -42,7 +44,8 @@ public class Hovedprogram {
 
             // Legger til noder i dataklynge
             for (int i = 0; i < antallNoder; i++) {
-                klynge.settInnIRack(new Node(antallProsessorer, minne));
+                Node node = new Node(antallProsessorer, minne);
+                klynge.settInnIRack(node);
             }
 
         }
