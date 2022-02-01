@@ -20,7 +20,7 @@ public class Hovedprogram {
 
     }
 
-    public static void lesFraFil(String filnavn, Dataklynge klynge) {
+    static void lesFraFil(String filnavn, Dataklynge klynge) {
     
         // Opretter et Scanner-objekt
         Scanner fil = null;
