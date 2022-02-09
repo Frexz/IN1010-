@@ -1,7 +1,7 @@
 public class Rack {
     
     // Deklarerer instansvariabler
-    private int nodesPerRack = 12;
+    private static final int nodesPerRack = 12;
     private Node[] rack = new Node[nodesPerRack];
 
     // Sjekker om det er ledig plass i racket

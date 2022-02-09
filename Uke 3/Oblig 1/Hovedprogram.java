@@ -3,7 +3,7 @@ import java.io.File;
 
 public class Hovedprogram {
     public static void main(String[] args) {
-        String filnavn = "dataklynge2.txt";
+        String filnavn = "dataklynge4.txt";
 
         // Oppretter dataklynge
         Dataklynge saga = new Dataklynge();
