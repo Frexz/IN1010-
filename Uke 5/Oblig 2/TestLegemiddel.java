@@ -5,68 +5,91 @@ public class TestLegemiddel {
         Vanlig vanlig = new Vanlig("Aerius", 85, 5);
         Narkotisk narkotisk = new Narkotisk("Paralgin forte", 86, 60, 2);
         Vanedannende vanedannende = new Vanedannende("Valium", 100, 5, 2);
-        
-        // Tester hvert av objektene
-        testObjekt(vanlig, 1, "Aerius", 85, 5, 0);
-        testObjekt(narkotisk, 2, "Paralgin forte", 86, 60, 2);
-        testObjekt(vanedannende, 3, "Valium", 100, 5, 2);
+        Argumenter argumenter = new Argumenter();
 
-        // Tester redefinisjonen av toString()-metoden
+        // Setter forventede testverdier og tester Vanlig
+        argumenter.settLegemiddel(vanlig);
+        argumenter.settForventetId(1);
+        argumenter.settForventetNavn("Aerius");
+        argumenter.settForventetPris(85);
+        argumenter.settForventetVirkestoff(5);
+        testLegemiddel(argumenter);
         System.out.println(vanlig);
+
+        //Setter forventede testverdier og tester Narkotisk
+        argumenter.settLegemiddel(narkotisk);
+        argumenter.settForventetId(2);
+        argumenter.settForventetNavn("Paralgin forte");
+        argumenter.settForventetPris(86);
+        argumenter.settForventetVirkestoff(60);
+        argumenter.settForventetStyrke(2);
+        testLegemiddel(argumenter);
         System.out.println(narkotisk);
+
+        //Tester forventede testverdier og tester Vanedannende
+        argumenter.settLegemiddel(vanedannende);
+        argumenter.settForventetId(3);
+        argumenter.settForventetNavn("Valium");
+        argumenter.settForventetPris(100);
+        argumenter.settForventetVirkestoff(5);
+        argumenter.settForventetStyrke(2);
+        testLegemiddel(argumenter);
         System.out.println(vanedannende);
+        
     }
 
-    // Tester et vilkårlig objekt
-    public static void testObjekt(Legemiddel legemiddel, int id, String navn, int pris, double virkestoff, int styrke) {
+    // Tester et vilkårlig legemiddel
+    public static void testLegemiddel(Argumenter argumenter) {
+        System.out.println("\nTester " + argumenter.hentLegemiddel().getClass().getSimpleName());
+        System.out.println("-------------------");
         
-        // Test 1.1
-        if (testLegemiddelId(legemiddel, id)) {
-            System.out.println("\nRiktig 1.1");
+        // Test 1
+        if (testLegemiddelId(argumenter.hentLegemiddel(), argumenter.hentForventetId())) {
+            System.out.println("Riktig 1");
         } else {
-            System.out.println("\nFeil 1.1");
+            System.out.println("Feil 1");
         }
 
-        // Test 1.2
-        if (testLegemiddelNavn(legemiddel, navn)) {
-            System.out.println("Riktig 1.2");
+        // Test 2
+        if (testLegemiddelNavn(argumenter.hentLegemiddel(), argumenter.hentForventetNavn())) {
+            System.out.println("Riktig 2");
         } else {
-            System.out.println("Feil 1.2");
+            System.out.println("Feil 2");
         }
 
-        // Test 1.3
-        if (testLegemiddelPris(legemiddel, pris)) {
-            System.out.println("Riktig 1.3");
+        // Test 3
+        if (testLegemiddelPris(argumenter.hentLegemiddel(), argumenter.hentForventetPris())) {
+            System.out.println("Riktig 3");
         } else {
-            System.out.println("Feil 1.3");
+            System.out.println("Feil 3");
         }
 
-        // Test 1.4
-        if (testLegemiddelVirkestoff(legemiddel, virkestoff)) {
-            System.out.println("Riktig 1.4");
+        // Test 4
+        if (testLegemiddelVirkestoff(argumenter.hentLegemiddel(), argumenter.hentForventetVirkestoff())) {
+            System.out.println("Riktig 4");
         } else {
-            System.out.println("Feil 1.4");
+            System.out.println("Feil 4");
         }
 
-        // Test 1.5
-        if (testSettNyPris(legemiddel, 340)) {
-            System.out.println("Riktig 1.5");
+        // Test 5
+        if (testSettNyPris(argumenter.hentLegemiddel(), 340)) {
+            System.out.println("Riktig 5");
         } else {
-            System.out.println("Feil 1.5");
+            System.out.println("Feil 5");
         }
 
-        // Test 1.6
-        if (legemiddel instanceof Narkotisk) {
-            if (testNarkotiskStyrke((Narkotisk) legemiddel, styrke)) {
-                System.out.println("Riktig 1.6.1");
+        // Test 6
+        if (argumenter.hentLegemiddel() instanceof Narkotisk) {
+            if (testNarkotiskStyrke((Narkotisk) argumenter.hentLegemiddel(), argumenter.hentForventetStyrke())) {
+                System.out.println("Riktig 6.1");
             } else {
-                System.out.println("Feil 1.6.1");
+                System.out.println("Feil 6.1");
             }
-        } else if (legemiddel instanceof Vanedannende) {
-            if (testVanedannendeStyrke((Vanedannende) legemiddel, styrke)) {
-                System.out.println("Riktig 1.6.2");
+        } else if (argumenter.hentLegemiddel() instanceof Vanedannende) {
+            if (testVanedannendeStyrke((Vanedannende) argumenter.hentLegemiddel(), argumenter.hentForventetStyrke())) {
+                System.out.println("Riktig 6.2");
             } else {
-                System.out.println("Feil 1.6.2");
+                System.out.println("Feil 6.2");
             }
         }
     }

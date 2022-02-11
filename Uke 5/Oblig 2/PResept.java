@@ -1,9 +1,10 @@
 public class PResept extends HvitResept {
+
+    protected static final int rabatt = 108;
     
     // Konstruktør
     public PResept(Legemiddel legemiddel, Lege utskrivendeLege, int pasientId, int reit) {
         super(legemiddel, utskrivendeLege, pasientId, reit);
-        rabatt = 108;
     }
 
     // Returnerer pris å betale for legemiddelet
@@ -17,5 +18,10 @@ public class PResept extends HvitResept {
         } else {
             return aaBetale;
         }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

@@ -20,6 +20,6 @@ public class HvitResept extends Resept {
     // Redefinerer toString()-metiden
     @Override
     public String toString() {
-        return super.toString() + "\nFarge: " + farge();
+        return super.toString() + "\nFarge: " + farge() + "\nPris: " + prisAaBetale();
     }
 }

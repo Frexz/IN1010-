@@ -1,9 +1,10 @@
 public class BlaaResept extends Resept {
     
+    protected static final double rabatt = 0.75;
+
     // Konstruktør
     public BlaaResept(Legemiddel legemiddel, Lege utskrivendLege, int pasientId, int reit) {
         super(legemiddel, utskrivendLege, pasientId, reit);
-        rabatt = 0.75;
     }
 
     // Returnerer reseptens farge
@@ -17,5 +18,10 @@ public class BlaaResept extends Resept {
     public int prisAaBetale() {
          int aaBetale = (int) Math.round(legemiddel.hentPris() * (1 - rabatt));
          return aaBetale;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nFarge: " + farge() + "\nPris: " + prisAaBetale();
     }
 }

@@ -63,6 +63,6 @@ public abstract class Resept {
     // Redefinerer toString()-metiden
     @Override
     public String toString() {
-        return ("\nID: " + id + "\nLegemiddel: " + legemiddel + "\nUtskrivende lege: " + lege + "\nPasient ID: " + pasientId + "\nRe-it: " + reit);
+        return ("\nID: " + id + "\nLegemiddel: " + legemiddel.hentNavn() + "\nUtskrivende lege: " + lege + "\nPasient ID: " + pasientId + "\nRe-it: " + reit);
     }
 }
