@@ -22,6 +22,7 @@ public class PResept extends HvitResept {
 
     @Override
     public String toString() {
-        return super.toString();
+        String nyString = super.toString().substring(24);
+        return "\nP-resept\n--------" + nyString;
     }
 }

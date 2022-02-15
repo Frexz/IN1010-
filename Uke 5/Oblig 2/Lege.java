@@ -16,6 +16,6 @@ public class Lege {
     // Skriver ut informasjon om legen
     @Override
     public String toString() {
-        return hentNavn();
+        return "\nLege\n----" + "\nNavn: " + navn;
     }
 }

@@ -16,6 +16,6 @@ public class Vanedannende extends Legemiddel {
 
     @Override
     public String toString() {
-        return (super.toString() + "\nVanedannende styrke: " + vanedannendeStyrke);
+        return ("\nVanedannende legemiddel\n-----------------------" + super.toString() + "\nVanedannende styrke: " + vanedannendeStyrke);
     }
 }

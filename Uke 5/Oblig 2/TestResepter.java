@@ -5,7 +5,7 @@ public class TestResepter {
         Vanlig vanlig1 = new Vanlig("Aerius", 85, 5);
         Vanlig vanlig2 = new Vanlig("Microgynon", 110, 5);
         Narkotisk narkotisk = new Narkotisk("Paralgin forte", 86, 60, 2);
-        Vanedannende vanedannende = new Vanedannende("Valium", 100, 5, 2);
+        Vanedannende vanedannende = new Vanedannende("Valium", 101, 5, 2);
 
         Lege lege = new Lege("Watson");
 
@@ -120,12 +120,36 @@ public class TestResepter {
             System.out.println("Feil 7");
         }
 
-        // Test 8 - Skriv om for MiLResept og PResept
+        // Test 8
         if (testReseptPrisAaBetale(argumenter.hentResept(), argumenter.hentForventetPris())) {
             System.out.println("Riktig 8");
         } else {
             System.out.println("Feil 8");
         }
+
+        // Test 8.1 - Tester pris på legemiddel i PResept ikke blir mindre enn 0 når prisen er mindre enn rabatten.
+        if (argumenter.hentResept() instanceof PResept) {
+            argumenter.hentLegemiddel().settNyPris(100);
+            argumenter.settForventetPris(0);
+
+            if (testReseptPrisAaBetale(argumenter.hentResept(), argumenter.hentForventetPris())) {
+                System.out.println("Riktig 8.1");
+            } else {
+                System.out.println("Feil 8.1");
+            }
+
+        // Test 8.2 - Tester pris på legemiddel i BlaaResept om det blir rundet av til nærmeste hele tall
+        } else if (argumenter.hentResept() instanceof BlaaResept) {
+            argumenter.hentLegemiddel().settNyPris(102);
+            argumenter.settForventetPris(26);
+
+            if (testReseptPrisAaBetale(argumenter.hentResept(), argumenter.hentForventetPris())) {
+                System.out.println("Riktig 8.2");
+            } else {
+                System.out.println("Feil 8.2");
+            }
+        }
+
     }
 
     public static boolean testReseptHentId(Resept resept, int forventetId) {

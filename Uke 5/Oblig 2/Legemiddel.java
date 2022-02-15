@@ -44,6 +44,6 @@ public abstract class Legemiddel {
     // Overskriver toString()
     @Override
     public String toString() {
-        return ("\nID: " + id + "\nNavn: " + navn + "\nPris: " + pris + "\nVirkestoff: " + virkestoff);
+        return ("\nID: " + id + "\nNavn: " + navn + "\nPris: " + pris + " kr" + "\nVirkestoff: " + virkestoff + " mg");
     }
 }

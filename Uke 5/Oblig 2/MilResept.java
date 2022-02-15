@@ -14,4 +14,9 @@ public class MilResept extends HvitResept {
         return aaBetale;
     }
 
+    @Override
+    public String toString() {
+        String nyString = super.toString().substring(24);
+        return "\nMilitærresept\n-------------" + nyString;
+    }
 }
