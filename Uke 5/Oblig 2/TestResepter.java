@@ -16,7 +16,7 @@ public class TestResepter {
 
         Argumenter argumenter = new Argumenter();
 
-        // Setter argumenter og tester HvitResept
+        // Setter forventede testverdier og tester HvitResept
         argumenter.settResept(hvit);
         argumenter.settForventetId(1);
         argumenter.settLegemiddel(vanlig1);
@@ -28,7 +28,7 @@ public class TestResepter {
         testResept(argumenter);
         System.out.println(hvit);
 
-        // Setter argumenter og tester MilResept
+        // Setter forventede testverdier og tester MilResept
         argumenter.settResept(mil);
         argumenter.settForventetId(2);
         argumenter.settLegemiddel(narkotisk);
@@ -40,7 +40,7 @@ public class TestResepter {
         testResept(argumenter);
         System.out.println(mil);
 
-        // Setter argumenter og tester PResept
+        // Setter forventede testverdier og tester PResept
         argumenter.settResept(pres);
         argumenter.settForventetId(3);
         argumenter.settLegemiddel(vanlig2);
@@ -52,7 +52,7 @@ public class TestResepter {
         testResept(argumenter);
         System.out.println(pres);
 
-        // Setter argumenter og tester BlaaResept
+        // Setter forventede testverdier og tester BlaaResept
         argumenter.settResept(blaa);
         argumenter.settForventetId(4);
         argumenter.settLegemiddel(vanedannende);
@@ -127,7 +127,7 @@ public class TestResepter {
             System.out.println("Feil 8");
         }
 
-        // Test 8.1 - Tester pris på legemiddel i PResept ikke blir mindre enn 0 når prisen er mindre enn rabatten.
+        // Test 8.1 - Tester at pris på legemiddel i PResept ikke blir mindre enn 0 når prisen er mindre enn rabatten.
         if (argumenter.hentResept() instanceof PResept) {
             argumenter.hentLegemiddel().settNyPris(100);
             argumenter.settForventetPris(0);

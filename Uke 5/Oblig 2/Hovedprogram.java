@@ -1,17 +1,17 @@
 public class Hovedprogram {
     public static void main(String[] args) {
         
-        // Oppretter legemiddel - objekter
+        // Oppretter legemiddel-objekter
         Vanlig vanlig1 = new Vanlig("Aerius", 85, 5);
         Vanlig vanlig2 = new Vanlig("Microgynon", 110, 5);
         Narkotisk narkotisk = new Narkotisk("Paralgin forte", 86, 60, 2);
         Vanedannende vanedannende = new Vanedannende("Valium", 100, 5, 2);
 
-        // Oppretter lege - objekter
+        // Oppretter lege-objekter
         Lege lege = new Lege("Hans Hansen");
         Spesialist spesialist = new Spesialist("Line Li", "123456");
 
-        // Oppretter resept - objekter
+        // Oppretter resept-objekter
         HvitResept hvit = new HvitResept(vanlig1, lege, 1, 3);
         MilResept mil = new MilResept(narkotisk, spesialist, 2);
         PResept pres = new PResept(vanlig2, lege, 3, 5);

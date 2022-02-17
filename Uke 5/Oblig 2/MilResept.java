@@ -1,6 +1,6 @@
 public class MilResept extends HvitResept {
 
-    protected static final double rabatt = 1.0;
+    protected final double rabatt = 1.0;
     
     // Konstruktør
     public MilResept(Legemiddel legemiddel, Lege utskrivendeLege, int pasientId) {

@@ -1,6 +1,6 @@
 public class PResept extends HvitResept {
 
-    protected static final int rabatt = 108;
+    protected final int rabatt = 108;
     
     // Konstruktør
     public PResept(Legemiddel legemiddel, Lege utskrivendeLege, int pasientId, int reit) {

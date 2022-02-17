@@ -1,6 +1,6 @@
 public class BlaaResept extends Resept {
     
-    protected static final double rabatt = 0.75;
+    protected final double rabatt = 0.75;
 
     // Konstruktør
     public BlaaResept(Legemiddel legemiddel, Lege utskrivendLege, int pasientId, int reit) {

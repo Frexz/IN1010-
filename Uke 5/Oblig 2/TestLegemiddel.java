@@ -80,11 +80,15 @@ public class TestLegemiddel {
 
         // Test 6
         if (argumenter.hentLegemiddel() instanceof Narkotisk) {
+
+            // Tester styrken for Narkotisk
             if (testNarkotiskStyrke((Narkotisk) argumenter.hentLegemiddel(), argumenter.hentForventetStyrke())) {
                 System.out.println("Riktig 6.1");
             } else {
                 System.out.println("Feil 6.1");
             }
+
+            // Tester styrken for Vanedannende
         } else if (argumenter.hentLegemiddel() instanceof Vanedannende) {
             if (testVanedannendeStyrke((Vanedannende) argumenter.hentLegemiddel(), argumenter.hentForventetStyrke())) {
                 System.out.println("Riktig 6.2");
