@@ -1,6 +1,6 @@
 public class EngelskFullblodshest extends Hest {
-
-    public EngelskFullblodshest(String navn, int alder) {
-        super(navn, alder);
+    
+    public EngelskFullblodshest(String n, int a) {
+        super(n, a);
     }
 }

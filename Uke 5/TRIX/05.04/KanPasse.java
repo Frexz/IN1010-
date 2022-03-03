@@ -1,3 +1,4 @@
 public interface KanPasse {
-    public void pass();
+    
+    public void passe();
 }

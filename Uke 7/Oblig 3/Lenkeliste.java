@@ -3,6 +3,7 @@ public abstract class Lenkeliste<T> implements Liste<T> {
     // Indre klasse Node som er med å bygge opp strukturen i beholderen
     class Node {
         Node neste = null;
+        Node forrige = null;
         T data;
         Node(T x) {
             data = x;
@@ -12,6 +13,7 @@ public abstract class Lenkeliste<T> implements Liste<T> {
 
     // Lenkelistens instansvariabler
     protected Node start = null;
+    protected Node slutt = null;
     protected int antallNoder = 0;
 
     // Returnerer antall elementer
@@ -22,26 +24,27 @@ public abstract class Lenkeliste<T> implements Liste<T> {
     // Legger til et nytt element
     public void leggTil(T x) {
         Node nyNode;
-        Node peker = start;
 
-        // Lar start referere til ny node hvis lenkelisten er tom
+        // Legger til ny node i listen hvis den er tom
         if (antallNoder == 0) {
             nyNode = new Node(x);
             start = nyNode;
-        
-        // Finner siste node og lar den neste referere til ny node
+            slutt = nyNode;
+        // Legger til ny node etter siste 
         } else {
-            for (int i = 1; i < antallNoder; i++) {
-                peker = peker.neste;
-            }
-
             nyNode = new Node(x);
-            peker.neste = nyNode;
+            slutt.neste = nyNode;
+            nyNode.forrige = slutt;
+            slutt = nyNode;
         }
     }
 
     // Returnerer første elementet i listen uten å fjerne det
     public T hent() {
+        if (start == null) {
+            throw new UgyldigListeindeks(-1);
+        }
+        
         return start.data;
     }
 
@@ -52,14 +55,12 @@ public abstract class Lenkeliste<T> implements Liste<T> {
         }
 
         T fjernetData = start.data;
+        start = start.neste;
 
-        // Håndtering hvis listen er tom etter fjerning av første element
-        if (start.neste == null) {
-            start = null;
-        } else {
-            start = start.neste;
+        if (start != null) {
+            start.forrige = null;
         }
-
+        
         antallNoder--;
         return fjernetData;
     }

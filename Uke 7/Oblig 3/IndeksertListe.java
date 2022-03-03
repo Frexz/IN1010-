@@ -3,25 +3,39 @@ public class IndeksertListe<T> extends Lenkeliste<T> {
     // Legger til nytt element ved bestemt posisjon
     public void leggTil(int pos, T x) {
         Node nyNode;
-        Node peker = start;
-        Node nyAndreNode;
+        Node gjeldendeNode = start;
 
         throwUgyldigListeindeksExceptionLeggTil(pos);
 
-        // Spesialtilfelle dersom elementet som legges til er det første elementet
-        if (pos == 0) {
+        // Hvis listen er tom - spesialtilfelle
+        if (antallNoder == 0) {
             nyNode = new Node(x);
-            nyAndreNode = peker;
-            nyNode.neste = nyAndreNode;
+            start = nyNode;
+            slutt = nyNode;
+        // Hvis posisjonen er 0 - spesialtilfelle
+        } else if (pos == 0) {
+            nyNode = new Node(x);
+            nyNode.neste = start;
+            start.forrige = nyNode;
             start = nyNode;
         } else {
             nyNode = new Node(x);
             for (int i = 1; i < pos; i++) {
-                peker = peker.neste;
+                gjeldendeNode = gjeldendeNode.neste;
             }
-            nyAndreNode = peker.neste;
-            nyNode.neste = nyAndreNode;
-            peker.neste = nyNode;
+            nyNode.forrige = gjeldendeNode;
+            nyNode.neste = gjeldendeNode.neste;
+            gjeldendeNode.neste = nyNode;
+
+            // Hvis noden legges midt i listen må denne linjen kjøres i tillegg for at den skal bli dobbeltlenket
+            if (nyNode.neste != null) {
+                nyNode.neste.forrige = nyNode;
+            }
+            
+            // Hvis noden legge til på slutten bli sluttpekeren lik den nye noden
+            if (pos == antallNoder - 1) {
+                slutt = nyNode;
+            }
         }
 
 
@@ -29,51 +43,66 @@ public class IndeksertListe<T> extends Lenkeliste<T> {
 
     // Endrer elementet i listen ved den angitte posisjonen
     public void sett(int pos, T x) {
-        Node peker = start;
+        Node gjeldendeNode = start;
 
         throwUgyldigListeindeksException(pos);
 
         for (int i = 0; i < pos; i++) {
-            peker = peker.neste;
+            gjeldendeNode = gjeldendeNode.neste;
         }
 
-        peker.data = x;
+        gjeldendeNode.data = x;
     }
 
     // Returnerer elementet ved den angitte posisjonen
     public T hent(int pos) {
-        Node peker = start;
+        Node gjeldendeNode = start;
 
         throwUgyldigListeindeksException(pos);
 
         for (int i = 0; i < pos; i++) {
-            peker = peker.neste;
+            gjeldendeNode = gjeldendeNode.neste;
         }
 
-        return peker.data;
+        return gjeldendeNode.data;
     }
 
     // Fjerner elementet ved den angitte posisjonen
     public T fjern(int pos) {
-        Node peker = start;
-        Node fjernetNode;
+        Node gjeldendeNode = start;
+        T fjernetData;
 
         throwUgyldigListeindeksException(pos);
 
         // Spesialtilfelle dersom elementet som fjernes er det første elementet
         if (pos == 0) {
-            fjernetNode = peker;
-            start = peker.neste;
+            fjernetData = start.data;
+            start = start.neste;
+
+            if (start != null) {
+                start.forrige = null;
+            }
+
         } else {
             for (int i = 1; i < pos; i++) {
-                peker = peker.neste;
+                gjeldendeNode = gjeldendeNode.neste;
             }
-            fjernetNode = peker.neste;
-            peker.neste = peker.neste.neste;
+            fjernetData = gjeldendeNode.neste.data;
+            gjeldendeNode.neste = gjeldendeNode.neste.neste;
+
+            if (gjeldendeNode.neste != null) {
+                gjeldendeNode.neste.forrige = gjeldendeNode;
+            }
+
+            if (pos == antallNoder - 1) {
+                slutt = gjeldendeNode;
+            }
+            
+            
         }
 
         antallNoder--;
-        return fjernetNode.data;
+        return fjernetData;
     }
 
     // Kaster indeks exception ved leggTil-metode
