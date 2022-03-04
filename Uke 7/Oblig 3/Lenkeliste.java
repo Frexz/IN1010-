@@ -57,6 +57,7 @@ public abstract class Lenkeliste<T> implements Liste<T> {
         T fjernetData = start.data;
         start = start.neste;
 
+        // Setter forrige-peker lik null hvis det er flere elementer igjen i listen etter fjerning
         if (start != null) {
             start.forrige = null;
         }
@@ -65,6 +66,7 @@ public abstract class Lenkeliste<T> implements Liste<T> {
         return fjernetData;
     }
 
+    // Skriver ut innholdet i lenkelisten
     @Override
     public String toString() {
         String resultatStreng = "";

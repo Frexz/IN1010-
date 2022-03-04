@@ -18,6 +18,7 @@ public class IndeksertListe<T> extends Lenkeliste<T> {
             nyNode.neste = start;
             start.forrige = nyNode;
             start = nyNode;
+        // Setter inn element ved angitt posisjon
         } else {
             nyNode = new Node(x);
             for (int i = 1; i < pos; i++) {
@@ -27,12 +28,12 @@ public class IndeksertListe<T> extends Lenkeliste<T> {
             nyNode.neste = gjeldendeNode.neste;
             gjeldendeNode.neste = nyNode;
 
-            // Hvis noden legges midt i listen må denne linjen kjøres i tillegg for at den skal bli dobbeltlenket
+            // Hvis elementet legges midt i listen må denne linjen kjøres i tillegg for at den skal bli dobbeltlenket
             if (nyNode.neste != null) {
                 nyNode.neste.forrige = nyNode;
             }
             
-            // Hvis noden legge til på slutten bli sluttpekeren lik den nye noden
+            // Hvis elementet legges til på slutten blir sluttpekeren lik den nye noden
             if (pos == antallNoder - 1) {
                 slutt = nyNode;
             }
@@ -82,7 +83,7 @@ public class IndeksertListe<T> extends Lenkeliste<T> {
             if (start != null) {
                 start.forrige = null;
             }
-
+        // Fjerner elementer ved angitt posisjon
         } else {
             for (int i = 1; i < pos; i++) {
                 gjeldendeNode = gjeldendeNode.neste;
@@ -90,10 +91,12 @@ public class IndeksertListe<T> extends Lenkeliste<T> {
             fjernetData = gjeldendeNode.neste.data;
             gjeldendeNode.neste = gjeldendeNode.neste.neste;
 
+            // Denne linjen må kjøres hvis elementet legges til mellom to andre elementer i listen
             if (gjeldendeNode.neste != null) {
                 gjeldendeNode.neste.forrige = gjeldendeNode;
             }
 
+            // Setter sluttpeker hvis elementet legges til på slutten av listen
             if (pos == antallNoder - 1) {
                 slutt = gjeldendeNode;
             }
