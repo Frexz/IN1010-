@@ -27,6 +27,8 @@ public class Prioritetskoe<T extends Comparable<T>> extends Lenkeliste<T> {
                 return;
                 
             }
+
+            gjeldendeNode = gjeldendeNode.neste;
         }
 
         // Legge til element på slutten av listen

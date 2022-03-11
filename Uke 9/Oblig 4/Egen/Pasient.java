@@ -18,6 +18,10 @@ public class Pasient {
         return pasientID;
     }
 
+    public void leggTilResept(Resept resept) {
+        resepter.leggTil(resept);
+    }
+
     @Override
     public String toString() {
         return "\nPasient\n-------\n" + "ID: " + pasientID + "\nNavn: " + navn + "\nFoedselsnummer: " + foedselsnummer;
