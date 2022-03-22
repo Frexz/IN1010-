@@ -16,28 +16,35 @@ public class Lege implements Comparable<Lege>{
         return navn;
     }
 
+    // Returnerer liste med resepter
+    public IndeksertListe<Resept> hentUtskrevneResepter() {
+      return utskrevneResepter;
+    }
+
     // Skriver ut informasjon om legen
     @Override
     public String toString() {
         return "\nLege\n----" + "\nNavn: " + navn;
     }
 
-    // Sammenlikner leger alfabetisk på etternavn
+    // Sammenlikner leger alfabetisk på etternavn 
     @Override
     public int compareTo(Lege annenLege) {
-        
+        //17.03 fjernet etternavnsjekk fordi i den store filen begynner ikkje alle navnene med dr. og da blir sorteringen feil
+        return navn.compareTo(annenLege.hentNavn());
+
         // Henter legenes etternavn etter "Dr. "
-        String etternavn = navn.substring(4);
-        String annetEtternavn = annenLege.hentNavn().substring(4);
+        //String etternavn = navn.substring(4);
+        //String annetEtternavn = annenLege.hentNavn().substring(4);
 
         // Returnerer resultatet fra String sin compareTo-metode ettersom den er laget for å sortere alfabetisk.
-        return etternavn.compareTo(annetEtternavn);
+        //return etternavn.compareTo(annetEtternavn);
     }
 
     //Operetter en hvit resept.
     // 11.03 F - Endret metodenavn til slik den står i oppgaven, fikset syntax for exception og lagt til funksjonalitet for å legge resepten til i pasientens liste også. La også til
     // retur av resepten siden metoden krever det. Endret "this.Lege" til bare "this".
-    public HvitResept skrivHvitResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift {
+    public HvitResept skrivHvitResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift{
       if (legemiddel instanceof Narkotisk) {
         throw new UlovligUtskrift(this, legemiddel);
       }
@@ -52,7 +59,7 @@ public class Lege implements Comparable<Lege>{
     //Operetter en P resept.
     // 11.03 F - Endret metodenavn til slik den står i oppgaven, fikset syntax for exception og lagt til funksjonalitet for å legge resepten til i pasientens liste også. La også til
     // retur av resepten siden metoden krever det. Endret "this.Lege" til bare "this".
-    public PResept skrivPResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift {
+    public PResept skrivPResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift{
       if (legemiddel instanceof Narkotisk) {
         throw new UlovligUtskrift(this, legemiddel);
       }
@@ -67,7 +74,7 @@ public class Lege implements Comparable<Lege>{
     //Operetter en militaer resept.
     // 11.03 F - Endret metodenavn til slik den står i oppgaven, fikset syntax for exception og lagt til funksjonalitet for å legge resepten til i pasientens liste også. La også til
     // retur av resepten siden metoden krever det. Endret "this.Lege" til bare "this".
-    public MilResept skrivMilResept(Legemiddel legemiddel, Pasient pasient) throws UlovligUtskrift {
+    public MilResept skrivMilResept(Legemiddel legemiddel, Pasient pasient) throws UlovligUtskrift{
       if (legemiddel instanceof Narkotisk) {
         throw new UlovligUtskrift(this, legemiddel);
       }
@@ -82,7 +89,7 @@ public class Lege implements Comparable<Lege>{
     //Operetter en blaa resept.
     // 11.03 F - Endret metodenavn til slik den står i oppgaven, fikset syntax for exception og lagt til funksjonalitet for å legge resepten til i pasientens liste også. La også til
     // retur av resepten siden metoden krever det. Endret "this.Lege" til bare "this".
-    public BlaaResept skrivBlaaResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift {
+    public BlaaResept skrivBlaaResept(Legemiddel legemiddel, Pasient pasient, int reit) throws UlovligUtskrift{
       if (legemiddel instanceof Narkotisk) {
         if (this instanceof Spesialist) {
           BlaaResept resept = new BlaaResept(legemiddel, this, pasient, reit);
